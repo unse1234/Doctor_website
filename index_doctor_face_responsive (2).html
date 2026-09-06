@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Kashifa Zubair — Consultant Gynecologist &amp; Obstetrician, Layyah</title>
+<meta name="description" content="Dr. Kashifa Zubair, MBBS, FCPS (Gynecology) — Consultant Gynecologist &amp; Obstetrician at Dawood Ramzan Hospital, Bypass Road, Layyah. Consultations 2:00 PM – 8:00 PM, closed Sundays.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   1. DESIGN TOKENS
+   Values taken from the reference design. Change them here only.
+   ========================================================================== */
+:root{
+  /* --- Color ------------------------------------------------------------ */
+  --frame:#e4e3e0;            /* outer canvas the site sits on             */
+  --shell:#f6f5f3;            /* site surface                              */
+  --surface:#ffffff;          /* cards, tiles                              */
+  --surface-2:#efeeeb;        /* recessed surface                          */
+  --ink:#101010;              /* headings, black buttons                   */
+  --ink-2:#3d3d3b;            /* body on light                             */
+  --muted:#7a7a78;            /* secondary text                            */
+  --line:#e4e2de;             /* hairlines, tile borders                   */
+  --line-2:#d6d4d0;           /* stronger hairline                         */
+  --blush:#e7dbd3;            /* accent tile from the reference gallery    */
+  --on-dark:#ffffff;
+  --on-dark-2:rgba(255,255,255,.72);
+  --on-dark-3:rgba(255,255,255,.6);
+  --dark:#000000;             /* footer                                    */
+
+  /* Image-slot tints, sampled from the reference photography.
+     They stand in until real photographs are supplied. */
+  --ph-rose:linear-gradient(135deg,#efdedb 0%,#e5cdc8 48%,#d7bcbe 100%);
+  --ph-sand:linear-gradient(135deg,#ece2d6 0%,#ded1c1 100%);
+  --ph-mist:linear-gradient(135deg,#e0e8ed 0%,#c9d7e1 100%);
+  --ph-sage:linear-gradient(135deg,#e1e8dd 0%,#cbd8c8 100%);
+  --ph-warm:linear-gradient(135deg,#eee3da 0%,#dcc9bd 100%);
+
+  /* --- Type ------------------------------------------------------------- */
+  --font-display:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+
+  --fs-hero:clamp(38px,6.6vw,86px);
+  --fs-banner:clamp(32px,5.4vw,68px);
+  --fs-h2:clamp(26px,3.1vw,42px);
+  --fs-h3:15px;
+  --fs-body:14px;
+  --fs-small:13px;
+  --fs-label:10px;             /* letter-spaced caps                       */
+
+  --lh-display:0.98;
+  --lh-h2:1.14;
+  --lh-body:1.62;
+  --ls-display:-0.028em;
+  --ls-h2:-0.022em;
+  --ls-label:0.13em;
+
+  /* --- Space ------------------------------------------------------------ */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px;
+  --s-6:32px; --s-7:48px; --s-8:64px;
+  --section-y:clamp(56px,7vw,104px);
+  --gutter:clamp(20px,3.4vw,44px);
+  --container:1280px;
+
+  /* --- Radius ----------------------------------------------------------- */
+  --r-xs:8px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:26px;
+  --r-pill:999px;
+
+  /* --- Elevation -------------------------------------------------------- */
+  --shadow-1:0 1px 2px rgba(16,16,16,.04);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --t-fast:180ms cubic-bezier(.4,0,.2,1);
+  --t-base:300ms cubic-bezier(.4,0,.2,1);
+  --t-slow:600ms cubic-bezier(.22,.61,.36,1);
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+[id]{scroll-margin-top:84px}
+body{
+  margin:0;
+  background:var(--shell);
+  color:var(--ink-2);
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3,h4,p,dl,dt,dd{margin:0}
+ul{margin:0;padding:0;list-style:none}
+svg{display:block;flex:none}
+
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+.on-dark :focus-visible,.hero :focus-visible,.banner :focus-visible,.footer :focus-visible{outline-color:#fff}
+
+.skip{
+  position:absolute;left:var(--s-4);top:-100px;z-index:200;
+  background:var(--ink);color:var(--on-dark);
+  padding:12px 20px;border-radius:var(--r-pill);
+  font-size:var(--fs-small);transition:top var(--t-fast);
+}
+.skip:focus{top:var(--s-4)}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ==========================================================================
+   3. LAYOUT PRIMITIVES
+   ========================================================================== */
+.shell{
+  background:var(--shell);
+  border-radius:0;
+  margin:0;
+  overflow:hidden;
+}
+.container{
+  width:100%;
+  max-width:calc(var(--container) + var(--gutter) * 2);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+.section{padding-block:var(--section-y)}
+
+/* Section header: heading + lede on the left, controls on the right ------- */
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:var(--s-6);
+  margin-bottom:var(--s-7);
+}
+.section-head__text{max-width:620px}
+.heading{
+  font-family:var(--font-display);
+  font-size:var(--fs-h2);
+  line-height:var(--lh-h2);
+  letter-spacing:var(--ls-h2);
+  color:var(--ink);
+  font-weight:400;
+}
+.heading>span{display:block}
+.heading>span+span{font-weight:600}
+.lede{
+  margin-top:var(--s-4);
+  max-width:56ch;
+  color:var(--muted);
+  font-size:var(--fs-small);
+}
+.section-head__aside{display:flex;gap:var(--s-2);flex:none;padding-bottom:var(--s-1)}
+
+/* ==========================================================================
+   4. BUTTONS
+   ========================================================================== */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 22px;
+  border-radius:var(--r-pill);
+  font-family:var(--font-body);
+  font-size:var(--fs-label);
+  font-weight:500;
+  letter-spacing:var(--ls-label);
+  text-transform:uppercase;
+  white-space:nowrap;
+  border:1px solid transparent;
+  transition:background var(--t-fast),color var(--t-fast),border-color var(--t-fast);
+}
+.btn svg{width:14px;height:14px}
+.btn--dark{background:var(--ink);color:var(--on-dark)}
+.btn--dark:hover{background:#2c2c2c}
+.btn--light{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.btn--light:hover{background:var(--surface-2)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn--ghost:hover{background:var(--surface)}
+.btn--sm{padding:10px 18px}
+
+/* Circular icon button (carousel arrows, scroll cue) --------------------- */
+.icon-btn{
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border:1px solid var(--line-2);
+  border-radius:50%;
+  color:var(--ink);
+  transition:background var(--t-fast),border-color var(--t-fast),opacity var(--t-fast);
+}
+.icon-btn:hover{background:var(--surface)}
+.icon-btn[disabled]{opacity:.32;cursor:default}
+.icon-btn svg{width:15px;height:15px}
+.icon-btn--on-dark{border-color:rgba(255,255,255,.4);color:var(--on-dark)}
+.icon-btn--on-dark:hover{background:rgba(255,255,255,.14)}
+
+/* ==========================================================================
+   5. MEDIA SLOTS
+   TEMPORARY STOCK IMAGERY — REPLACE BEFORE LAUNCH.
+   Every photograph is a real <img class="media__img"> in the markup, so
+   you can see and edit each src directly in the HTML below. To use the
+   clinic's own photographs, change the src and the alt text:
+       <img class="media__img" src="images/hero.jpg" alt="...">
+   Each .media--* rule sets a tinted gradient that sits behind its image
+   as a fallback, so a missing photo never shows a broken-image icon.
+   Current photos are Unsplash (free licence, no attribution required)
+   and show obstetric / women's-health subjects.
+   ========================================================================== */
+.media__img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:50% 32%;
+  display:block;
+}
+
+/* HERO PHOTO — keep the doctor's face inside the safe visible area.
+   The focal point changes slightly on smaller screens because the hero
+   becomes taller/narrower and object-fit:cover crops more vertically. */
+.hero__media .media__img{
+  object-position:50% 32%;
+}
+
+.media{
+  position:relative;
+  overflow:hidden;
+  background-color:var(--surface-2);
+  background-image:var(--img,none),var(--ph,var(--ph-sand));
+  background-size:cover;
+  background-position:center;
+}
+.media--hero{--ph:var(--ph-rose)} /* modest mother and baby in hijab */
+.media--banner{--ph:var(--ph-sage)} /* modest mother and baby in hijab */
+.media--doctor{--ph:var(--ph-mist)} /* female healthcare professionals wearing hijab */
+.media--chip{--ph:var(--ph-warm);--img:url("https://images.unsplash.com/photo-1770514327738-384e0a157854?auto=format&fit=crop&w=300&q=82")} /* modest mother and baby */
+.media--s1{--ph:var(--ph-rose)} /* mother and baby */
+.media--s2{--ph:var(--ph-mist)} /* clean hospital room */
+.media--s3{--ph:var(--ph-sand)} /* women healthcare professionals */
+.media--s4{--ph:var(--ph-sage)} /* clean hospital room */
+.media--s5{--ph:var(--ph-warm)} /* women healthcare professionals */
+.media--s6{--ph:var(--ph-rose)} /* female healthcare professionals wearing hijab */
+.media--g1{--ph:var(--ph-mist)} /* clean hospital room */
+.media--g2{--ph:var(--ph-warm)} /* mother and baby */
+.media--g3{--ph:var(--ph-sage)} /* gentle newborn hand detail */
+.media--g4{--ph:var(--ph-rose)} /* modest mother and baby */
+
+/* ==========================================================================
+   6. NAVIGATION
+   ========================================================================== */
+.nav{
+  position:absolute;top:0;left:0;right:0;z-index:40;
+  padding-block:var(--s-5);
+}
+.nav__inner{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:var(--s-5);
+}
+.wordmark{
+  font-family:var(--font-display);
+  font-size:13px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--on-dark);
+}
+.nav__links{display:flex;gap:26px;justify-content:center}
+.nav__links a{
+  font-size:12px;color:var(--on-dark-2);
+  transition:color var(--t-fast);
+}
+.nav__links a:hover{color:var(--on-dark)}
+.nav__cta{display:flex;justify-content:flex-end}
+.nav__cta .btn--dark{background:var(--ink)}
+.nav__burger{display:none;justify-self:end;color:var(--on-dark);padding:8px}
+.nav__burger svg{width:20px;height:20px}
+
+/* Sticky compact bar — same components, revealed after the hero ---------- */
+.subnav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  background:rgba(246,245,243,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  transform:translateY(-101%);
+  transition:transform var(--t-base);
+}
+.subnav.is-visible{transform:translateY(0)}
+.subnav__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--s-5);height:64px;
+}
+.subnav .wordmark{color:var(--ink)}
+.subnav__links{display:flex;gap:24px}
+.subnav__links a{font-size:12px;color:var(--muted);transition:color var(--t-fast)}
+.subnav__links a:hover{color:var(--ink)}
+
+/* Mobile menu ------------------------------------------------------------ */
+.menu{
+  position:fixed;inset:0;z-index:80;
+  background:var(--shell);
+  padding:var(--s-5);
+  display:none;
+  flex-direction:column;
+}
+.menu.is-open{display:flex}
+.menu__top{display:flex;align-items:center;justify-content:space-between}
+.menu__top .wordmark{color:var(--ink)}
+.menu__close{padding:8px;color:var(--ink)}
+.menu__close svg{width:20px;height:20px}
+.menu__links{
+  display:flex;flex-direction:column;gap:var(--s-2);
+  margin-top:var(--s-8);
+}
+.menu__links a{
+  font-family:var(--font-display);
+  font-size:30px;letter-spacing:var(--ls-h2);color:var(--ink);
+  padding-block:6px;
+}
+.menu__foot{margin-top:auto;display:flex;flex-direction:column;gap:var(--s-3)}
+
+/* ==========================================================================
+   7. HERO
+   ========================================================================== */
+.hero{
+  position:relative;
+  min-height:min(90vh,840px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  isolation:isolate;
+  color:var(--on-dark);
+}
+.hero__media{position:absolute;inset:0;z-index:-2}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.34) 0%,rgba(0,0,0,0) 24%),
+    linear-gradient(97deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,0) 70%),
+    linear-gradient(0deg,rgba(0,0,0,.44) 0%,rgba(0,0,0,0) 32%),
+    linear-gradient(270deg,rgba(0,0,0,.34) 0%,rgba(0,0,0,0) 36%);
+}
+.hero__inner{
+  display:flex;flex-direction:column;gap:var(--s-8);
+  padding-top:150px;padding-bottom:var(--s-7);
+}
+.hero__main{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:var(--s-7);
+}
+.eyebrow{
+  font-size:var(--fs-label);font-weight:500;
+  letter-spacing:var(--ls-label);text-transform:uppercase;
+  color:var(--on-dark-2);
+}
+.hero__headline{
+  font-family:var(--font-display);
+  font-size:var(--fs-hero);
+  line-height:var(--lh-display);
+  letter-spacing:var(--ls-display);
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--on-dark);
+  margin-top:var(--s-4);
+}
+.hero__headline>span{display:block}
+.headline__chip{
+  display:inline-block;vertical-align:middle;
+  width:clamp(44px,5.6vw,74px);
+  height:clamp(30px,3.9vw,52px);
+  border-radius:var(--r-xs);
+  margin-right:14px;
+  transform:translateY(-6%);
+}
+.hero__actions{display:flex;gap:var(--s-3);margin-top:var(--s-6);flex-wrap:wrap}
+.hero__stats{
+  display:flex;flex-direction:column;gap:var(--s-5);
+  text-align:right;flex:none;padding-top:var(--s-2);
+}
+.stat__value{
+  font-family:var(--font-display);
+  font-size:clamp(20px,2.2vw,30px);
+  font-weight:600;letter-spacing:-.02em;line-height:1.1;
+  color:var(--on-dark);
+}
+.stat__label{
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--on-dark-3);margin-top:3px;
+}
+.hero__foot{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:var(--s-6);
+}
+.hero__note{
+  max-width:56ch;font-size:var(--fs-small);
+  color:var(--on-dark-2);line-height:1.6;
+}
+
+/* ==========================================================================
+   8. RAIL (horizontal card row)
+   ========================================================================== */
+.rail{
+  display:flex;gap:var(--s-4);
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  scroll-behavior:smooth;
+  margin-right:calc(var(--gutter) * -1);
+  padding-right:var(--gutter);
+  padding-bottom:var(--s-1);
+  scrollbar-width:none;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start;flex:none}
+
+/* Service card: image, gradient, title + line of copy over it ------------ */
+.card{
+  position:relative;
+  width:clamp(252px,25vw,320px);
+  aspect-ratio:3/2.16;
+  border-radius:var(--r-md);
+  overflow:hidden;
+  color:var(--on-dark);
+  isolation:isolate;
+}
+.card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(12,20,30,.82) 0%,rgba(12,20,30,.34) 42%,rgba(12,20,30,0) 76%);
+}
+.card__body{
+  position:absolute;inset:auto 0 0 0;z-index:2;
+  padding:var(--s-4);
+}
+.card__title{
+  font-family:var(--font-display);
+  font-size:var(--fs-h3);font-weight:600;letter-spacing:-.015em;
+  line-height:1.25;
+}
+.card__text{
+  font-size:11.5px;line-height:1.5;
+  color:var(--on-dark-2);margin-top:5px;
+}
+
+/* ==========================================================================
+   9. TILES
+   ========================================================================== */
+.tiles{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--s-3);
+}
+.tile{
+  display:flex;align-items:center;gap:var(--s-3);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:16px 18px;
+  min-height:66px;
+  transition:border-color var(--t-fast),box-shadow var(--t-fast);
+}
+.tile:hover{border-color:var(--line-2);box-shadow:var(--shadow-1)}
+.tile__icon{
+  width:34px;height:34px;flex:none;
+  display:grid;place-items:center;
+  border-radius:var(--r-xs);
+  background:var(--surface-2);
+  color:var(--ink);
+}
+.tile__icon svg{width:17px;height:17px}
+.tile__text{font-size:var(--fs-small);color:var(--ink);line-height:1.4}
+a.tile__text:hover{color:var(--muted)}
+.tile__text small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+
+/* Outline variant, as used in the reference's second tile grid ----------- */
+.tile--outline{background:transparent;border-color:var(--line-2)}
+.tile--outline .tile__icon{background:transparent;color:var(--muted)}
+.tile--outline:hover{background:var(--surface)}
+
+/* ==========================================================================
+   10. DOCTOR
+   ========================================================================== */
+.doctor{
+  display:grid;
+  grid-template-columns:minmax(0,340px) minmax(0,1fr);
+  gap:clamp(28px,4.4vw,72px);
+  align-items:center;
+}
+.doctor-card{
+  position:relative;
+  aspect-ratio:3/4;
+  border-radius:var(--r-md);
+  overflow:hidden;
+  color:var(--on-dark);
+  isolation:isolate;
+}
+.doctor-card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(14,26,38,.86) 0%,rgba(14,26,38,.3) 44%,rgba(14,26,38,0) 74%);
+}
+.doctor-card__body{position:absolute;inset:auto 0 0 0;z-index:2;padding:var(--s-4)}
+.doctor-card__name{
+  font-family:var(--font-display);
+  font-size:19px;font-weight:600;letter-spacing:-.02em;
+}
+.doctor-card__role{font-size:11.5px;color:var(--on-dark-2);margin-top:2px}
+.doctor-card__meta{
+  display:flex;gap:var(--s-4);
+  margin-top:var(--s-3);padding-top:var(--s-3);
+  border-top:1px solid rgba(255,255,255,.22);
+}
+.doctor-card__meta span{
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--on-dark-3);
+}
+.doctor__prose p{margin-bottom:var(--s-4);max-width:64ch;color:var(--ink-2)}
+.doctor__prose p:first-child{color:var(--ink);font-size:15px;line-height:1.6}
+.doctor__prose p:last-of-type{margin-bottom:0}
+.doctor__actions{display:flex;gap:var(--s-3);margin-top:var(--s-6);flex-wrap:wrap}
+
+/* ==========================================================================
+   11. GALLERY
+   ========================================================================== */
+.gallery-item{
+  width:clamp(200px,21vw,264px);
+  aspect-ratio:1/.86;
+  border-radius:var(--r-md);
+  overflow:hidden;
+}
+.gallery-note{
+  width:clamp(200px,21vw,264px);
+  aspect-ratio:1/.86;
+  border-radius:var(--r-md);
+  background:var(--blush);
+  display:grid;place-items:center;
+  padding:var(--s-5);
+  text-align:center;
+}
+.gallery-note p{
+  font-family:var(--font-display);
+  font-size:15px;font-weight:500;letter-spacing:-.015em;
+  line-height:1.3;color:var(--ink);
+}
+
+/* ==========================================================================
+   12. FAQ
+   ========================================================================== */
+.faq{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+  gap:var(--s-6);
+}
+.faq__label{
+  font-family:var(--font-display);
+  font-size:var(--fs-h2);font-weight:400;
+  letter-spacing:var(--ls-h2);color:var(--ink);
+}
+.faq__item{border-bottom:1px solid var(--line)}
+.faq__item:first-child{border-top:1px solid var(--line)}
+.faq__q{
+  width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);
+  padding:20px 4px;
+  text-align:left;
+  font-size:var(--fs-small);color:var(--ink);
+}
+.faq__q svg{width:14px;height:14px;color:var(--muted);transition:transform var(--t-base)}
+.faq__q[aria-expanded="true"] svg{transform:rotate(180deg)}
+.faq__a{
+  overflow:hidden;
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows var(--t-base);
+}
+.faq__q[aria-expanded="true"]+.faq__a{grid-template-rows:1fr}
+.faq__a>div{overflow:hidden}
+.faq__a p{
+  padding:0 4px 22px;
+  font-size:var(--fs-small);color:var(--muted);max-width:62ch;
+}
+
+/* ==========================================================================
+   13. BANNER (closing call to action)
+   ========================================================================== */
+.banner{
+  position:relative;
+  min-height:min(74vh,600px);
+  display:flex;align-items:flex-end;
+  color:var(--on-dark);
+  isolation:isolate;
+}
+.banner__media{position:absolute;inset:0;z-index:-2}
+
+.banner::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(97deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 48%,rgba(0,0,0,0) 76%),
+    linear-gradient(0deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,0) 42%);
+}
+.banner__inner{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:var(--s-7);
+  padding-block:var(--s-8);
+  width:100%;
+}
+.banner__headline{
+  font-family:var(--font-display);
+  font-size:var(--fs-banner);
+  line-height:var(--lh-display);
+  letter-spacing:var(--ls-display);
+  text-transform:uppercase;font-weight:500;
+  max-width:14ch;
+}
+.banner__text{
+  margin-top:var(--s-5);max-width:48ch;
+  font-size:var(--fs-small);color:var(--on-dark-2);
+}
+.banner__actions{display:flex;flex-direction:column;gap:var(--s-3);align-items:flex-end;flex:none}
+
+/* ==========================================================================
+   14. FOOTER
+   ========================================================================== */
+.footer{background:var(--dark);color:var(--on-dark);padding-top:var(--s-7)}
+.footer__mark{
+  font-family:var(--font-display);
+  font-size:clamp(46px,21vw,300px);
+  font-weight:600;line-height:.82;letter-spacing:-.025em;
+  text-transform:uppercase;
+  color:var(--on-dark);
+  padding-bottom:.06em;
+}
+.footer__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));
+  gap:var(--s-6);
+  padding-top:var(--s-7);
+}
+.footer__about{
+  font-size:10px;letter-spacing:.08em;line-height:1.9;
+  text-transform:uppercase;color:var(--on-dark-2);
+  max-width:40ch;
+}
+.footer__col h3{
+  font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--on-dark-3);margin-bottom:var(--s-4);font-weight:500;
+}
+.footer__col li+li{margin-top:9px}
+.footer__col a,.footer__col span{
+  font-size:11.5px;color:var(--on-dark-2);
+  transition:color var(--t-fast);
+}
+.footer__col a:hover{color:var(--on-dark)}
+.footer__bottom{
+  padding-block:var(--s-7) var(--s-6);
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--on-dark-3);line-height:1.9;
+}
+
+/* ==========================================================================
+   15. MOTION
+   ========================================================================== */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity var(--t-slow),transform var(--t-slow)}
+.reveal.is-in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  html,.rail{scroll-behavior:auto}
+}
+
+/* ==========================================================================
+   16. RESPONSIVE
+   Same components, adapted. No alternate mobile design.
+   ========================================================================== */
+@media (max-width:1080px){
+  .nav__links{display:none}
+  .nav__cta{display:none}
+  .nav__burger{display:block}
+  .nav__inner{grid-template-columns:1fr auto}
+  .subnav__links{display:none}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .doctor{grid-template-columns:minmax(0,280px) minmax(0,1fr)}
+  .faq{grid-template-columns:minmax(0,1fr)}
+  .footer__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer__about{grid-column:1 / -1}
+}
+
+@media (max-width:820px){
+  /* Mobile/tablet: prioritize the upper part of the portrait so the
+     doctor's face remains visible when the narrow hero crops the image. */
+  .hero__media .media__img{
+    object-position:50% 20%;
+  }
+  .shell{margin:0;border-radius:0}
+  .hero{min-height:auto}
+  .hero__inner{padding-top:120px;gap:var(--s-7)}
+  .hero__main{flex-direction:column;gap:var(--s-7)}
+  .hero__stats{
+    flex-direction:row;flex-wrap:wrap;gap:var(--s-5) var(--s-6);
+    text-align:left;width:100%;
+  }
+  .hero__stats>div{flex:1 1 40%}
+  .hero__foot{flex-direction:column;align-items:flex-start;gap:var(--s-5)}
+  .section-head{flex-direction:column;align-items:flex-start;gap:var(--s-5)}
+  .section-head__aside{padding-bottom:0}
+  .doctor{grid-template-columns:minmax(0,1fr);gap:var(--s-6)}
+  .doctor-card{max-width:320px}
+  .banner__inner{flex-direction:column;align-items:flex-start;gap:var(--s-6)}
+  .banner__actions{flex-direction:row;align-items:flex-start;flex-wrap:wrap}
+  .banner__headline{max-width:none}
+}
+
+@media (max-width:560px){
+  /* Phones: move the focal point a little higher for the tallest crop. */
+  .hero__media .media__img{
+    object-position:50% 15%;
+  }
+  .tiles{grid-template-columns:minmax(0,1fr)}
+  .card{width:min(78vw,300px)}
+  .gallery-item,.gallery-note{width:min(66vw,240px)}
+  .hero__actions .btn,.banner__actions .btn{flex:1 1 auto;justify-content:center}
+  .footer__grid{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Icon sprite: one family, 1.5px stroke, matching the reference icon style -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+  </symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5v14M6 13l6 6 6-6"/>
+  </symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 5l-7 7 7 7"/>
+  </symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 5l7 7-7 7"/>
+  </symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 9l7 7 7-7"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+  </symbol>
+  <symbol id="i-hospital" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 21V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v15M4 21h16"/><path d="M12 8v5M9.5 10.5h5"/><path d="M9 21v-3.5h6V21"/>
+  </symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4l9 4.5-9 4.5-9-4.5L12 4z"/><path d="M6.5 10.6V15c0 1.5 2.6 3 5.5 3s5.5-1.5 5.5-3v-4.4"/>
+  </symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.8L7.5 21l4.5-2.4L16.5 21l-1-7.2"/>
+  </symbol>
+  <symbol id="i-stethoscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4.5M14 3h1.5"/><path d="M10 12v3a4.5 4.5 0 0 0 9 0v-1.5"/><circle cx="19" cy="11" r="2"/>
+  </symbol>
+  <symbol id="i-calendar-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9.5 14.5l5 4M14.5 14.5l-5 4"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <path d="M6 6l12 12M18 6L6 18"/>
+  </symbol>
+</svg>
+
+<!-- Sticky compact bar (same design language as the hero navigation) -->
+<div class="subnav" id="subnav">
+  <div class="container subnav__inner">
+    <a class="wordmark" href="#home">Dr. Kashifa Zubair</a>
+    <nav class="subnav__links" aria-label="Section navigation">
+      <a href="#services">Services</a>
+      <a href="#qualifications">Qualifications</a>
+      <a href="#about">About</a>
+      <a href="#clinic">Clinic</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--dark btn--sm" href="tel:03328768484">
+      <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book appointment
+    </a>
+  </div>
+</div>
+
+<!-- Mobile menu -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="menu__top">
+    <span class="wordmark">Dr. Kashifa Zubair</span>
+    <button class="menu__close" id="menu-close" aria-label="Close menu">
+      <svg aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+  <nav class="menu__links" aria-label="Main">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#qualifications">Qualifications</a>
+    <a href="#about">About</a>
+    <a href="#clinic">Clinic</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--dark" href="tel:03328768484">
+      <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book appointment
+    </a>
+    <a class="btn btn--ghost" href="tel:03217561904">
+      <svg aria-hidden="true"><use href="#i-phone"/></svg>0321-7561904
+    </a>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ====================================================================
+       HERO
+       ==================================================================== -->
+  <header class="hero" id="home">
+    <div class="media media--hero hero__media">
+        <img class="media__img" loading="eager" decoding="async"
+             src="https://images.unsplash.com/photo-1685022036532-ea7e3b114578?auto=format&fit=crop&w=2000&q"
+             alt="Female healthcare professionals wearing hijab">
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <div class="container nav__inner">
+        <a class="wordmark" href="#home">Dr. Kashifa Zubair</a>
+        <div class="nav__links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#qualifications">Qualifications</a>
+          <a href="#about">About</a>
+          <a href="#clinic">Clinic</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="nav__cta">
+          <a class="btn btn--dark btn--sm" href="tel:03328768484">
+            <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book appointment
+          </a>
+        </div>
+        <button class="nav__burger" id="menu-open" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <svg aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container hero__inner">
+      <div class="hero__main">
+        <div>
+          <p class="eyebrow">Consultant Gynecologist &amp; Obstetrician</p>
+          <h1 class="hero__headline">
+            <span>Expert care</span>
+            <span><span class="media media--chip headline__chip" aria-hidden="true"></span>for women's</span>
+            <span>health</span>
+          </h1>
+          <div class="hero__actions">
+            <a class="btn btn--dark" href="tel:03328768484">
+              <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book an appointment
+            </a>
+            <a class="btn btn--light" href="#services">
+              <svg aria-hidden="true"><use href="#i-arrow-right"/></svg>View services
+            </a>
+          </div>
+        </div>
+
+        <dl class="hero__stats">
+          <div>
+            <dt class="stat__value">MBBS</dt>
+            <dd class="stat__label">Bachelor of Medicine, Bachelor of Surgery</dd>
+          </div>
+          <div>
+            <dt class="stat__value">FCPS</dt>
+            <dd class="stat__label">Fellow — Gynecology</dd>
+          </div>
+          <div>
+            <dt class="stat__value">2–8 PM</dt>
+            <dd class="stat__label">Consultation hours, closed Sundays</dd>
+          </div>
+          <div>
+            <dt class="stat__value">Layyah</dt>
+            <dd class="stat__label">Dawood Ramzan Hospital</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero__foot">
+        <p class="hero__note">
+          From routine gynecological consultation to delivery and complex conditions,
+          Dr. Kashifa Zubair provides comprehensive, evidence-based care for women at
+          every stage of their reproductive health.
+        </p>
+        <a class="icon-btn icon-btn--on-dark" href="#services" aria-label="Scroll to services">
+          <svg aria-hidden="true"><use href="#i-arrow-down"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ==================================================================
+         SERVICES — reference card rail
+         ================================================================== -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <h2 class="heading"><span>Complete care for</span><span>Every stage of women's health.</span></h2>
+            <p class="lede">
+              Diagnosis, delivery and treatment across gynecology and obstetrics,
+              provided in one place with personal attention.
+            </p>
+          </div>
+          <div class="section-head__aside">
+            <button class="icon-btn" data-rail-prev="services-rail" aria-label="Previous services">
+              <svg aria-hidden="true"><use href="#i-chevron-left"/></svg>
+            </button>
+            <button class="icon-btn" data-rail-next="services-rail" aria-label="More services">
+              <svg aria-hidden="true"><use href="#i-chevron-right"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="rail reveal" id="services-rail">
+          <li class="card media media--s1">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1752937360065-3a4f8f956883?auto=format&fit=crop&w=800&q=82"
+                   alt="Modestly dressed mother in hijab holding a baby">
+            <div class="card__body">
+              <h3 class="card__title">Normal delivery</h3>
+              <p class="card__text">Safe and comfortable natural childbirth with expert guidance and care.</p>
+            </div>
+          </li>
+          <li class="card media media--s2">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1710074213374-e68503a1b795?auto=format&fit=crop&w=800&q=82"
+                   alt="Clean hospital room prepared for patient care">
+            <div class="card__body">
+              <h3 class="card__title">C-section delivery</h3>
+              <p class="card__text">Surgical delivery with the highest standards of safety and medical care.</p>
+            </div>
+          </li>
+          <li class="card media media--s3">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1685022036532-ea7e3b114578?auto=format&fit=crop&w=800&q=82"
+                   alt="Two female healthcare professionals wearing hijab">
+            <div class="card__body">
+              <h3 class="card__title">Pregnancy &amp; childbirth diagnosis</h3>
+              <p class="card__text">Comprehensive diagnosis of problems during pregnancy and childbirth.</p>
+            </div>
+          </li>
+          <li class="card media media--s4">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1710074213374-e68503a1b795?auto=format&fit=crop&w=800&q=82"
+                   alt="Clean hospital room and medical facilities">
+            <div class="card__body">
+              <h3 class="card__title">Complex gynecological diseases</h3>
+              <p class="card__text">Expert treatment of complicated gynecological conditions.</p>
+            </div>
+          </li>
+          <li class="card media media--s5">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1685022036532-ea7e3b114578?auto=format&fit=crop&w=800&q=82"
+                   alt="Female healthcare professionals wearing hijab">
+            <div class="card__body">
+              <h3 class="card__title">Manual vacuum aspiration</h3>
+              <p class="card__text">Safe and effective procedure for specific gynecological needs.</p>
+            </div>
+          </li>
+          <li class="card media media--s6">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1752937360065-3a4f8f956883?auto=format&fit=crop&w=800&q=82"
+                   alt="Modestly dressed mother in hijab with baby">
+            <div class="card__body">
+              <h3 class="card__title">Cyst diagnosis &amp; treatment</h3>
+              <p class="card__text">Diagnosis and treatment of uterine and ovarian cysts.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         QUALIFICATIONS — reference tile grid
+         ================================================================== -->
+    <section class="section" id="qualifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <h2 class="heading"><span>Qualified and experienced in</span><span>Gynecology and obstetrics.</span></h2>
+            <p class="lede">
+              MBBS and FCPS in Gynecology, with hospital service in Faisalabad,
+              Layyah and Fatehpur.
+            </p>
+          </div>
+          <div class="section-head__aside">
+            <a class="btn btn--dark" href="tel:03328768484">
+              <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book an appointment
+            </a>
+            <a class="btn btn--ghost" href="#clinic">
+              <svg aria-hidden="true"><use href="#i-pin"/></svg>Clinic details
+            </a>
+          </div>
+        </div>
+
+        <ul class="tiles reveal">
+          <li class="tile">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-cap"/></svg></span>
+            <span class="tile__text">MBBS<small>Bachelor of Medicine, Bachelor of Surgery</small></span>
+          </li>
+          <li class="tile">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-award"/></svg></span>
+            <span class="tile__text">FCPS (Gynecology)<small>Fellow, College of Physicians and Surgeons</small></span>
+          </li>
+          <li class="tile">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-stethoscope"/></svg></span>
+            <span class="tile__text">Consultant Gynecologist &amp; Obstetrician<small>Dawood Ramzan Hospital, Layyah</small></span>
+          </li>
+          <li class="tile">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-hospital"/></svg></span>
+            <span class="tile__text">Postgraduate Resident<small>Formerly, Allied Hospital, Faisalabad</small></span>
+          </li>
+          <li class="tile">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-hospital"/></svg></span>
+            <span class="tile__text">Woman Medical Officer<small>Formerly, DHQ Hospital, Layyah</small></span>
+          </li>
+          <li class="tile">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-hospital"/></svg></span>
+            <span class="tile__text">Woman Medical Officer<small>Formerly, THQ Hospital, Fatehpur</small></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         ABOUT — reference doctor card
+         ================================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <h2 class="heading"><span>Meet your</span><span>Doctor.</span></h2>
+          </div>
+        </div>
+
+        <div class="doctor reveal">
+          <!-- Placeholder photo. Replace with Dr. Kashifa's own portrait before launch. -->
+          <article class="doctor-card media media--doctor">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1685022036532-ea7e3b114578?auto=format&fit=crop&w=900&q=82"
+                   alt="Female healthcare professionals wearing hijab in a clinical setting">
+            <div class="doctor-card__body">
+              <h3 class="doctor-card__name">Dr. Kashifa Zubair</h3>
+              <p class="doctor-card__role">Consultant Gynecologist &amp; Obstetrician</p>
+              <div class="doctor-card__meta">
+                <span>MBBS</span>
+                <span>FCPS (Gynecology)</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="doctor__prose">
+            <p>
+              Dr. Kashifa Zubair is a highly qualified Consultant Gynecologist and
+              Obstetrician with extensive experience in women's health and
+              reproductive medicine.
+            </p>
+            <p>
+              With her strong educational background — MBBS and FCPS in Gynecology —
+              and professional experience at leading hospitals, she is dedicated to
+              providing comprehensive, evidence-based care.
+            </p>
+            <p>
+              She specializes in managing complex gynecological conditions, ensuring
+              safe deliveries, and providing compassionate care during every stage of
+              a woman's reproductive health journey.
+            </p>
+            <p>
+              Her practice combines medical expertise with personalized attention to
+              ensure the best outcomes for her patients.
+            </p>
+            <div class="doctor__actions">
+              <a class="btn btn--dark" href="tel:03328768484">
+                <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book an appointment
+              </a>
+              <a class="btn btn--ghost" href="#services">
+                <svg aria-hidden="true"><use href="#i-arrow-right"/></svg>View services
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         CLINIC — reference outline tile grid
+         ================================================================== -->
+    <section class="section" id="clinic">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <h2 class="heading"><span>Care that</span><span>Respects your time.</span></h2>
+            <p class="lede">
+              Location, consultation hours and direct numbers — everything you need
+              before your visit.
+            </p>
+          </div>
+        </div>
+
+        <ul class="tiles reveal">
+          <li class="tile tile--outline">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-hospital"/></svg></span>
+            <span class="tile__text">Dawood Ramzan Hospital</span>
+          </li>
+          <li class="tile tile--outline">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <span class="tile__text">Bypass Road, Layyah</span>
+          </li>
+          <li class="tile tile--outline">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <span class="tile__text">2:00 PM – 8:00 PM</span>
+          </li>
+          <li class="tile tile--outline">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-calendar-off"/></svg></span>
+            <span class="tile__text">Closed on Sundays</span>
+          </li>
+          <li class="tile tile--outline">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <a class="tile__text" href="tel:03328768484">0332-8768484</a>
+          </li>
+          <li class="tile tile--outline">
+            <span class="tile__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <a class="tile__text" href="tel:03217561904">0321-7561904</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!--
+      ==================================================================
+      TESTIMONIALS — reference section, intentionally not published.
+      The client file contains no patient testimonials, so nothing has
+      been invented. Paste real, consented quotes into the list below
+      and uncomment the block to restore the reference section.
+
+      <section class="section" id="testimonials">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="section-head__text">
+              <h2 class="heading"><span>Trusted by</span><span>Her patients.</span></h2>
+            </div>
+            <div class="section-head__aside">
+              <button class="icon-btn" data-rail-prev="quotes-rail" aria-label="Previous">
+                <svg aria-hidden="true"><use href="#i-chevron-left"/></svg>
+              </button>
+              <button class="icon-btn" data-rail-next="quotes-rail" aria-label="Next">
+                <svg aria-hidden="true"><use href="#i-chevron-right"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul class="rail reveal" id="quotes-rail">
+            <li class="tile" style="flex:0 0 clamp(260px,30%,380px);align-items:flex-start">
+              <span class="tile__text">Quote goes here.<small>Patient name</small></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      ==================================================================
+    -->
+
+    <!-- ==================================================================
+         FACILITY — reference gallery rail
+         ================================================================== -->
+    <section class="section" id="facility">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <h2 class="heading"><span>Designed around</span><span>Comfort and care.</span></h2>
+          </div>
+          <div class="section-head__aside">
+            <button class="icon-btn" data-rail-prev="facility-rail" aria-label="Previous photographs">
+              <svg aria-hidden="true"><use href="#i-chevron-left"/></svg>
+            </button>
+            <button class="icon-btn" data-rail-next="facility-rail" aria-label="More photographs">
+              <svg aria-hidden="true"><use href="#i-chevron-right"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="rail reveal" id="facility-rail">
+          <li class="gallery-item media media--g1">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1710074213374-e68503a1b795?auto=format&fit=crop&w=700&q=82"
+                   alt="Clean hospital room and patient-care environment">
+          </li>
+          <li class="gallery-note">
+            <p>Compassionate care at every stage</p>
+          </li>
+          <li class="gallery-item media media--g2">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1752937360065-3a4f8f956883?auto=format&fit=crop&w=700&q=82"
+                   alt="Modestly dressed mother in hijab holding her baby">
+          </li>
+          <li class="gallery-item media media--g3">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1685022036532-ea7e3b114578?auto=format&fit=crop&w=700&q=82"
+                   alt="Female healthcare professionals wearing hijab">
+          </li>
+          <li class="gallery-item media media--g4">
+              <img class="media__img" loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1752937360065-3a4f8f956883?auto=format&fit=crop&w=700&q=82"
+                   alt="Modestly dressed mother in hijab with baby">
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         FAQ
+         ================================================================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="faq reveal">
+          <h2 class="faq__label">FAQ</h2>
+          <div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false" aria-controls="faq-1">
+                How do I book an appointment?
+                <svg aria-hidden="true"><use href="#i-chevron-down"/></svg>
+              </button>
+              <div class="faq__a" id="faq-1"><div><p>
+                Call the clinic directly on 0332-8768484 or 0321-7561904 during
+                consultation hours.
+              </p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false" aria-controls="faq-2">
+                Where does Dr. Kashifa practise?
+                <svg aria-hidden="true"><use href="#i-chevron-down"/></svg>
+              </button>
+              <div class="faq__a" id="faq-2"><div><p>
+                At Dawood Ramzan Hospital, Bypass Road, Layyah.
+              </p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false" aria-controls="faq-3">
+                What are the consultation timings?
+                <svg aria-hidden="true"><use href="#i-chevron-down"/></svg>
+              </button>
+              <div class="faq__a" id="faq-3"><div><p>
+                2:00 PM to 8:00 PM. The clinic is closed on Sundays.
+              </p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false" aria-controls="faq-4">
+                What are Dr. Kashifa's qualifications?
+                <svg aria-hidden="true"><use href="#i-chevron-down"/></svg>
+              </button>
+              <div class="faq__a" id="faq-4"><div><p>
+                MBBS and FCPS in Gynecology. She has previously served as a
+                Postgraduate Resident at Allied Hospital, Faisalabad, and as a Woman
+                Medical Officer at DHQ Hospital, Layyah and THQ Hospital, Fatehpur.
+              </p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false" aria-controls="faq-5">
+                Which services are available?
+                <svg aria-hidden="true"><use href="#i-chevron-down"/></svg>
+              </button>
+              <div class="faq__a" id="faq-5"><div><p>
+                Normal delivery, C-section delivery, diagnosis of problems during
+                pregnancy and childbirth, treatment of complex gynecological diseases,
+                manual vacuum aspiration (MVA), and diagnosis and treatment of uterine
+                and ovarian cysts.
+              </p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         CLOSING BANNER
+         ================================================================== -->
+    <section class="banner" id="appointment">
+      <div class="media media--banner banner__media">
+          <img class="media__img" loading="lazy" decoding="async"
+               src="https://images.unsplash.com/photo-1752937360065-3a4f8f956883?auto=format&fit=crop&w=2000&q=82"
+               alt="Modestly dressed mother in hijab holding her baby">
+      </div>
+      <div class="container banner__inner">
+        <div>
+          <h2 class="banner__headline">Compassionate care for women's health.</h2>
+          <p class="banner__text">
+            Consultations at Dawood Ramzan Hospital, Bypass Road, Layyah —
+            2:00 PM to 8:00 PM, closed on Sundays.
+          </p>
+        </div>
+        <div class="banner__actions">
+          <a class="btn btn--dark" href="tel:03328768484">
+            <svg aria-hidden="true"><use href="#i-calendar"/></svg>Book an appointment
+          </a>
+          <a class="btn btn--light" href="tel:03217561904">
+            <svg aria-hidden="true"><use href="#i-phone"/></svg>Call 0321-7561904
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__mark">Kashifa</p>
+
+      <div class="footer__grid">
+        <p class="footer__about">
+          Consultant Gynecologist &amp; Obstetrician providing expert women's
+          healthcare services. MBBS, FCPS (Gynecology) — Dawood Ramzan Hospital,
+          Bypass Road, Layyah.
+        </p>
+
+        <nav class="footer__col" aria-label="Quick links">
+          <h3>Quick links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#qualifications">Qualifications</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#clinic">Clinic</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-label="Services">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#services">Normal delivery</a></li>
+            <li><a href="#services">C-section delivery</a></li>
+            <li><a href="#services">Pregnancy &amp; childbirth diagnosis</a></li>
+            <li><a href="#services">Complex gynecological diseases</a></li>
+            <li><a href="#services">Manual vacuum aspiration</a></li>
+            <li><a href="#services">Cyst diagnosis &amp; treatment</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h3>Clinic</h3>
+          <ul>
+            <li><span>Dawood Ramzan Hospital</span></li>
+            <li><span>Bypass Road, Layyah</span></li>
+            <li><span>2:00 PM – 8:00 PM</span></li>
+            <li><span>Closed on Sundays</span></li>
+            <li><a href="tel:03328768484">0332-8768484</a></li>
+            <li><a href="tel:03217561904">0321-7561904</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer__bottom">
+        © 2024 Dr. Kashifa Zubair — Consultant Gynecologist &amp; Obstetrician.<br>
+        All rights reserved.
+      </p>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Physician",
+  "name":"Dr. Kashifa Zubair",
+  "medicalSpecialty":["Obstetric","Gynecologic"],
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Bypass Road",
+    "addressLocality":"Layyah",
+    "addressCountry":"PK"
+  },
+  "telephone":["+92-332-8768484","+92-321-7561904"],
+  "openingHours":"Mo,Tu,We,Th,Fr,Sa 14:00-20:00",
+  "worksFor":{"@type":"Hospital","name":"Dawood Ramzan Hospital"}
+}
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* --- Images: fall back to the gradient rather than a broken icon --- */
+  document.querySelectorAll('.media__img').forEach(function (img) {
+    img.addEventListener('error', function () { img.style.display = 'none'; });
+  });
+
+  /* --- Mobile menu ----------------------------------------------------- */
+  var menu = document.getElementById('menu');
+  var openBtn = document.getElementById('menu-open');
+  var closeBtn = document.getElementById('menu-close');
+
+  function setMenu(open) {
+    menu.classList.toggle('is-open', open);
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) { closeBtn.focus(); } else { openBtn.focus(); }
+  }
+  openBtn.addEventListener('click', function () { setMenu(true); });
+  closeBtn.addEventListener('click', function () { setMenu(false); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { setMenu(false); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) { setMenu(false); }
+  });
+
+  /* --- Sticky compact bar ---------------------------------------------- */
+  var subnav = document.getElementById('subnav');
+  var hero = document.getElementById('home');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      subnav.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }, { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
+  }
+
+  /* --- Card rails ------------------------------------------------------ */
+  function step(rail) {
+    var first = rail.querySelector('li');
+    if (!first) { return rail.clientWidth * 0.8; }
+    var gap = parseFloat(getComputedStyle(rail).columnGap) || 16;
+    return first.getBoundingClientRect().width + gap;
+  }
+  function sync(rail, prev, next) {
+    var max = rail.scrollWidth - rail.clientWidth - 2;
+    if (prev) { prev.disabled = rail.scrollLeft <= 2; }
+    if (next) { next.disabled = rail.scrollLeft >= max; }
+  }
+  document.querySelectorAll('.rail').forEach(function (rail) {
+    var prev = document.querySelector('[data-rail-prev="' + rail.id + '"]');
+    var next = document.querySelector('[data-rail-next="' + rail.id + '"]');
+    if (prev) {
+      prev.addEventListener('click', function () {
+        rail.scrollBy({ left: -step(rail), behavior: 'smooth' });
+      });
+    }
+    if (next) {
+      next.addEventListener('click', function () {
+        rail.scrollBy({ left: step(rail), behavior: 'smooth' });
+      });
+    }
+    rail.addEventListener('scroll', function () { sync(rail, prev, next); }, { passive: true });
+    window.addEventListener('resize', function () { sync(rail, prev, next); });
+    sync(rail, prev, next);
+  });
+
+  /* --- FAQ accordion --------------------------------------------------- */
+  document.querySelectorAll('.faq__q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq__q').forEach(function (other) {
+        other.setAttribute('aria-expanded', 'false');
+      });
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+  });
+
+  /* --- Reveal on first view -------------------------------------------- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+}());
+</script>
+</body>
+</html>
